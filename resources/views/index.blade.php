@@ -29,9 +29,6 @@
 
 <body>
 
-  <div id="trailer">
-
-  </div>
 
   <!-- Navigation Bar starts -->
   <header class="header_section">
@@ -153,12 +150,53 @@
         </div>
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="shop.html">
           View All Products
         </a>
       </div>
     </div>
   </section>
+
+  <hr><br>
+
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          My Orders
+        </h2>
+      </div>
+      <div class="row">
+        <div class="card"  style="width: 80em; border-radius: 12px;">
+          <img src="images/varsity.png" class="card-img-top">
+          <div class="card-body">
+            <div class="text-section">
+              <h5 class="card-title">Varsity</h5>
+              <p class="card-text">Sleeve: Kulit <br>
+                Patch: Embroidery <br>
+                Color: Red <br>
+                Interior: Cotton Fleece</p>
+            </div>
+            <div class="cta-section">
+              <div style="text-align: right;">
+                x12 <br>
+                Rp260.000 <br>
+                <b>Rp2.260.000</b>
+              </div>
+              <a href="orders.html">
+                <button class="btn btn-sm btn-warning">Details</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="orders.html">
+          View My Orders
+        </a>
+      </div>
+    </div>
+  </section>  
 
   <script src="index.js"></script>
   <script src="js/jquery-3.4.1.min.js"></script>
