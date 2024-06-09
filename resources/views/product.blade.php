@@ -32,27 +32,82 @@
 <body>
 
   <!-- Navigation Bar starts -->
-  <header class="header_section">
-    <nav class="navbar navbar-expand-lg custom_nav-container">
-      <div class="container px-4">
-          <a class="navbar-brand" href="index.html">
-            <img id="logo-konveksi" src="images/favicon.png" alt="Konveksi Suhat Logo">
-            <span> Konveksi Suhat</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""></span>
-          </button>
+  <header class="header" data-header>
+    <div class="container">
 
-          <div class="collapse navbar-collapse innerpage_navbar" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                  <li class="nav-item"><a class="nav-link" href="index">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="shop">Products</a></li>
-                  <li class="nav-item"><a class="nav-link" href="orders">My Orders</a></li>
-                  <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-              </ul>
-          </div>
-      </div>
-    </nav>
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="images/logo.png" width="270" height="50" alt="Konveksi Suhat logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="index.html" class="logo">
+          <img src="./assets/images/favicon.png" width="70" height="50" alt="Konveksi Suhat logo">
+        </a>
+
+        <ul class="navbar-list">
+          
+            <li class="navbar-item">
+                <a href="index.html" class="navbar-link">Home</a>
+              </li>
+    
+              <li class="navbar-item">
+                <a href="product.html" class="navbar-link">Products</a>
+              </li>
+    
+              <li class="navbar-item">
+                <a href="orders.html" class="navbar-link">My Orders</a>
+              </li>
+    
+              <li class="navbar-item">
+                <a href="contact.html" class="navbar-link">Contact</a>
+              </li>
+
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">My Account</span>
+            </a>
+          </li>
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+
+              <data class="nav-action-text">Cart</data>
+
+              <data class="nav-action-badge" value="4" aria-hidden="true">2</data>
+            </button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
   </header>
     <!-- end header section -->
 
@@ -133,6 +188,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   <script src="js/custom.js"></script>
+  
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
 
 </body>
 
