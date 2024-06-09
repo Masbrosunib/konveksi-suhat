@@ -45,10 +45,10 @@
 
           <div class="collapse navbar-collapse innerpage_navbar" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                  <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="shop.html">Products</a></li>
-                  <li class="nav-item"><a class="nav-link" href="orders.html">My Orders</a></li>
-                  <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" href="index">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="shop">Products</a></li>
+                  <li class="nav-item"><a class="nav-link" href="orders">My Orders</a></li>
+                  <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
               </ul>
           </div>
       </div>
