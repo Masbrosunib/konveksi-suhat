@@ -51,8 +51,8 @@
           <ion-icon name="close-outline"></ion-icon>
         </button>
 
-        <a href="index.html" class="logo">
-          <img src="./assets/images/favicon.png" width="70" height="50" alt="Konveksi Suhat logo">
+        <a href="index.html" class="logo" style="background-color: white;">
+          <img src="images/favicon.png" width="70" height="50" alt="Konveksi Suhat logo">
         </a>
 
         <ul class="navbar-list">
@@ -86,7 +86,7 @@
           </li>
 
           <li>
-            <a href="#" class="nav-action-btn">
+            <a href="login.html" class="nav-action-btn">
               <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
               <span class="nav-action-text">My Account</span>
@@ -100,7 +100,7 @@
   
                 <data class="nav-action-text">Cart</data>
   
-                <data class="nav-action-badge" value="4" aria-hidden="true">2</data>
+                <data class="nav-action-badge" value="2" aria-hidden="true">2</data>
               </button>
             </a>
           </li>
@@ -111,7 +111,8 @@
 
     </div>
   </header>
-  
+  <!-- Navigation bar ends -->
+
   <div class="heading_container heading_center" style="padding: 20px;">
     <h2>
       My Shopping Cart
@@ -120,7 +121,8 @@
 
 <main>
     <div id="cart-items" class="cart-items">
-        <div class="row"></div><!-- Cart items will be dynamically added here -->
+        <div class="row"></div>
+        <!-- Cart items will be dynamically added here -->
     </div>
 
     <div class="total">
