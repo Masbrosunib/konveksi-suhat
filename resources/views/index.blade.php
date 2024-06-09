@@ -50,26 +50,26 @@
           <ion-icon name="close-outline"></ion-icon>
         </button>
 
-        <a href="index.html" class="logo" style="background-color: white;">
+        <a href="index" class="logo" style="background-color: white;">
           <img src="images/favicon.png" width="70" height="50" alt="Konveksi Suhat logo">
         </a>
 
         <ul class="navbar-list">
           
             <li class="navbar-item">
-                <a href="index.html" class="navbar-link">Home</a>
+                <a href="index" class="navbar-link">Home</a>
               </li>
     
               <li class="navbar-item">
-                <a href="product.html" class="navbar-link">Products</a>
+                <a href="product" class="navbar-link">Products</a>
               </li>
     
               <li class="navbar-item">
-                <a href="orders.html" class="navbar-link">My Orders</a>
+                <a href="orders" class="navbar-link">My Orders</a>
               </li>
     
               <li class="navbar-item">
-                <a href="contact.html" class="navbar-link">Contact</a>
+                <a href="contact" class="navbar-link">Contact</a>
               </li>
 
         </ul>
@@ -85,7 +85,7 @@
           </li>
 
           <li>
-            <a href="login.html" class="nav-action-btn">
+            <a href="login" class="nav-action-btn">
               <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
               <span class="nav-action-text">My Account</span>
@@ -93,7 +93,7 @@
           </li>
 
           <li>
-            <a href="cart.html">
+            <a href="cart">
               <button class="nav-action-btn">
                 <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
   
@@ -209,7 +209,7 @@
         </div>
       </div>
       <div class="btn-box">
-        <a href="shop.html">
+        <a href="shop">
           View All Products
         </a>
       </div>
@@ -243,7 +243,7 @@
                 Rp260.000 <br>
                 <b>Rp2.260.000</b>
               </div>
-              <a href="orders.html">
+              <a href="orders">
                 <button class="btn btn-sm btn-warning">Details</button>
               </a>
             </div>
@@ -264,7 +264,7 @@
       </div>
      -->
       <div class="btn-box">
-        <a href="orders.html">
+        <a href="orders">
           View My Orders
         </a>
       </div>
