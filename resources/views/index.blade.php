@@ -50,8 +50,8 @@
           <ion-icon name="close-outline"></ion-icon>
         </button>
 
-        <a href="index.html" class="logo">
-          <img src="./assets/images/favicon.png" width="70" height="50" alt="Konveksi Suhat logo">
+        <a href="index.html" class="logo" style="background-color: white;">
+          <img src="images/favicon.png" width="70" height="50" alt="Konveksi Suhat logo">
         </a>
 
         <ul class="navbar-list">
@@ -85,7 +85,7 @@
           </li>
 
           <li>
-            <a href="#" class="nav-action-btn">
+            <a href="login.html" class="nav-action-btn">
               <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
               <span class="nav-action-text">My Account</span>
@@ -111,6 +111,8 @@
     </div>
   </header>
   <!-- Navigation bar ends -->
+
+
   <section class="slider_section">
     <div class="slider_container">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -279,7 +281,7 @@
         <ul class="insta-post-list has-scrollbar">
 
           <li class="insta-post-item">
-            <img src="images/insta-1.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+            <img src="images/insta-1.jpg" width="200" height="200" loading="lazy" alt="Instagram post"
               class="insta-post-banner image-contain">
 
             <a href="https://www.instagram.com/konveksisuhat/" class="insta-post-link">
@@ -288,7 +290,7 @@
           </li>
 
           <li class="insta-post-item">
-            <img src="images/insta-2.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+            <img src="images/insta-2.jpg" width="200" height="200" loading="lazy" alt="Instagram post"
               class="insta-post-banner image-contain">
 
             <a href="https://www.instagram.com/konveksisuhat/" class="insta-post-link">
@@ -297,7 +299,7 @@
           </li>
 
           <li class="insta-post-item">
-            <img src="images/insta-3.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+            <img src="images/insta-3.jpg" width="200" height="200" loading="lazy" alt="Instagram post"
               class="insta-post-banner image-contain">
 
             <a href="https://www.instagram.com/konveksisuhat/" class="insta-post-link">
@@ -306,7 +308,7 @@
           </li>
 
           <li class="insta-post-item">
-            <img src="images/insta-4.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+            <img src="images/insta-4.jpg" width="200" height="200" loading="lazy" alt="Instagram post"
               class="insta-post-banner image-contain">
 
             <a href="https://www.instagram.com/konveksisuhat/" class="insta-post-link">
@@ -315,7 +317,7 @@
           </li>
 
           <li class="insta-post-item">
-            <img src="images/insta-5.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+            <img src="images/insta-5.jpg" width="200" height="200" loading="lazy" alt="Instagram post"
               class="insta-post-banner image-contain">
 
             <a href="https://www.instagram.com/konveksisuhat/" class="insta-post-link">
@@ -324,7 +326,7 @@
           </li>
 
           <li class="insta-post-item">
-            <img src="images/insta-6.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+            <img src="images/insta-6.jpg" width="200" height="200" loading="lazy" alt="Instagram post"
               class="insta-post-banner image-contain">
 
             <a href="https://www.instagram.com/konveksisuhat/" class="insta-post-link">
@@ -333,7 +335,7 @@
           </li>
 
           <li class="insta-post-item">
-            <img src="images/insta-7.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+            <img src="images/insta-7.jpg" width="200" height="200" loading="lazy" alt="Instagram post"
               class="insta-post-banner image-contain">
 
             <a href="https://www.instagram.com/konveksisuhat/" class="insta-post-link">
@@ -342,7 +344,7 @@
           </li>
 
           <li class="insta-post-item">
-            <img src="images/insta-8.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+            <img src="images/insta-8.jpg" width="200" height="200" loading="lazy" alt="Instagram post"
               class="insta-post-banner image-contain">
 
             <a href="https://www.instagram.com/konveksisuhat/" class="insta-post-link">
