@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,28 +16,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SesiController::class, 'index']);
-Route::post('/', [SesiController::class, 'login']);
-
-
-Route::get('/admin', [AdminController::class, 'index']);
-
-Route::get('/index', function () {
-    return view('index');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [SesiController::class, 'index']);
+    Route::post('/', [SesiController::class, 'login']);
 });
 
-Route::get('/orders', function () {
-    return view('orders');
+
+Route::get('/dashboard', function() {
+    return redirect('/admin');
 });
 
-Route::get('/product', function () {
-    return view('product');
-});
+Route::get('/customer', [CustomerController::class, 'index']);
 
-Route::get('/cart', function () {
-    return view('cart');
-});
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+
+// Route::get('/index', function () {
+//     return view('index');
+// });
+
+// Route::get('/orders', function () {
+//     return view('orders');
+// });
+
+// Route::get('/product', function () {
+//     return view('product');
+// });
+
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
+
+// Route::get('/contact', function () {
+//     return view('contact');
+// });

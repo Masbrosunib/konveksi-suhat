@@ -28,8 +28,7 @@ class SesiController extends Controller
         ];
         
         if(Auth::attempt($infologin)){
-            echo "Login Berhasil";
-            exit();
+            return redirect('/admin');
         } else {
             return redirect('')->withErrors('Username dan Password tidak cocok')->withInput();
         }
