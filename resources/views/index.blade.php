@@ -209,7 +209,7 @@
         </div>
       </div>
       <div class="btn-box">
-        <a href="shop">
+        <a href="product">
           View All Products
         </a>
       </div>
