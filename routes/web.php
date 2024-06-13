@@ -21,6 +21,9 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/', [SesiController::class, 'login']);
 });
 
+Route::get('/', function() {
+    return view('home');
+});
 
 Route::get('/dashboard', function() {
     return redirect('/admin');

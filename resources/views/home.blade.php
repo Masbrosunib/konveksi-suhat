@@ -50,14 +50,14 @@
           <ion-icon name="close-outline"></ion-icon>
         </button>
 
-        <a href="index" class="logo" style="background-color: white;">
+        <a href="home" class="logo" style="background-color: white;">
           <img src="images/favicon.png" width="70" height="50" alt="Konveksi Suhat logo">
         </a>
 
         <ul class="navbar-list">
           
             <li class="navbar-item">
-                <a href="index" class="navbar-link">Home</a>
+                <a href="home" class="navbar-link">Home</a>
               </li>
     
               <li class="navbar-item">
