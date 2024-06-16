@@ -20,7 +20,7 @@
 <body>
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
-		<div class="signup">
+			<div class="signup">
 				@if($errors->any())
 					<div class="alert alert-danger">
 						<ul>
@@ -30,27 +30,26 @@
 						</ul>
 					</div>
 				@endif
-				<form action ="" method="POST">
+				<form action ="/login" method="POST">
 					@csrf
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" value="{{old('email')}}" name="email" placeholder="Email" class="form-control" >
+					<input type="email" name="email" placeholder="Email" class="form-control" >
 					<input type="password" name="password" placeholder="Password" class="form-control" >
 					<button name="submit" type="submit">Login</button>
 				</form>
 			</div>
 
 			<div class="login">
-				<form action="" method="POST">
+				<form action="/register" method="POST">
 					@csrf
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="username" placeholder="Username" >
+					<input type="text" name="name" placeholder="Nama Lengkap" >
 					<input type="email" name="email" placeholder="Email" >
-			        <input type="number" name="phone" placeholder="No. Tel" >
+			        <input type="number" name="phone" placeholder="No. Telepon" >
 					<input type="password" name="password" placeholder="Password" >
 					<button name="submit" type="submit">Sign up</button>
 				</form>
 			</div>
-		</input>
 	</div>
 </body>
 </html>

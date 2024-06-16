@@ -86,7 +86,7 @@
           </li>
 
           <li>
-            <a href="login" class="nav-action-btn">
+            <a href="/" class="nav-action-btn">
               <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
               <span class="nav-action-text">My Account</span>

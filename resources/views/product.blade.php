@@ -126,7 +126,29 @@
         </h2>
       </div>
       <div class="row">
-        <div class="product-container">
+        @foreach ($data as $product)
+            @if(isset($product->productName) && isset($product->price_per_piece))
+                <div class="product-container">
+                  <div class="box">
+                    <a onclick="togglePopup()">
+                      <div class="img-box">
+                        <img src="images/varsity.png" alt="">
+                      </div>
+                      <div class="detail-box">
+                        <h6>{{ $product->productName }}</h6>
+                        <h6><span>Rp. {{ $product->price_per_piece }}</span></h6>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+            @else
+                <div>
+                    Error: Product data is missing required fields.
+                </div>
+            @endif
+        @endforeach
+
+        {{-- <div class="product-container">
           <div class="box">
             <a onclick="togglePopup()">
               <div class="img-box">
@@ -164,20 +186,8 @@
               </div>
             </a>
           </div>
-        </div>
-        <div class="product-container">
-          <div class="box">
-            <a onclick="togglePopup()">
-              <div class="img-box">
-                <img src="images/varsity.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>Varsity</h6>
-                <h6><span>Rp39k</span></h6>
-              </div>
-            </a>
-          </div>
-        </div>
+        </div> --}}
+        
       </div>
     </div>
   </section>
@@ -293,7 +303,7 @@
             </li>
 
             <li>
-              <a href="#" class="footer-link">
+              <a href="/" class="footer-link">
                 <ion-icon name="chevron-forward-outline"></ion-icon>
 
                 <span class="footer-link-text">My Account</span>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/', [SesiController::class, 'index']);
-    Route::post('/', [SesiController::class, 'login']);
+    Route::get('/login', [SesiController::class, 'index']);
+    Route::post('/login', [SesiController::class, 'login']);
+    Route::post('/register', [SesiController::class, 'create']);
 });
 
+Route::get('/product', [ProductController::class, 'getProduct']);
+
+Route::post('logout', '\App\Http\Controllers\SesiController@logout');
 Route::get('/', function() {
     return view('home');
 });

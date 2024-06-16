@@ -83,7 +83,15 @@
               <span class="nav-action-text">Search</span>
             </button>
           </li>
+          @if(auth()->check())
+          <li>
+            <a href="profile" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
+              <span class="nav-action-text">My Account</span>
+            </a>
+          </li>
+          @else
           <li>
             <a href="login" class="nav-action-btn">
               <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
@@ -91,7 +99,7 @@
               <span class="nav-action-text">My Account</span>
             </a>
           </li>
-
+          @endif
           <li>
             <a href="cart">
               <button class="nav-action-btn">
@@ -103,6 +111,20 @@
               </button>
             </a>
           </li>
+          @if(auth()->check())
+          <li v-if="Auth.check()">
+            <form action="@route('logout')" method="POST">
+              @csrf  
+              <input type="hidden" name="logout" value="POST" > 
+              <a href="">
+                <button class="nav-action-btn">
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  <span class="nav-action-text">logout</span>
+                </button>
+              </a>
+            </form>
+          </li>
+          @endif
 
         </ul>
 
