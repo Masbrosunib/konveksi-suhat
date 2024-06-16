@@ -34,10 +34,6 @@ Route::get('/dashboard', function() {
     return redirect('/admin');
 });
 
-Route::get('/customer', [CustomerController::class, 'index']);
-
-
-
 // Route::get('/index', function () {
 //     return view('index');
 // });
