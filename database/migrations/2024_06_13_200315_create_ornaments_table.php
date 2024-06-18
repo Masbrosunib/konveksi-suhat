@@ -12,11 +12,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ornaments', function (Blueprint $table) {
-            $table->id();
-            $table->string('OrnamentID', 10)->primary();
-            $table->string('ornamentName', 255);
-            $table->string('material', 255);
-            $table->integer('price');
+            $table->id('ornament_id');
+            $table->string('ornament_name', 255);
+            $table->text('ornament_description');
+            $table->integer('ornament_price');
             $table->timestamps();
         });
     }

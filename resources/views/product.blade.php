@@ -126,7 +126,7 @@
         </h2>
       </div>
       <div class="row">
-        @foreach ($data as $product)
+        @foreach ($products as $product)
             @if(isset($product->productName) && isset($product->price_per_piece))
                 <div class="product-container">
                   <div class="box">

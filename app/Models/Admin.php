@@ -1,28 +1,33 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
-    protected $table = 'admins';
-    protected $primaryKey = 'AdminID';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $primaryKey = 'admin_id';
+
     protected $fillable = [
-        'adminID', 
-        'nama', 
-        'Email', 
-        'Phone', 
-        'Address', 
-        'Password'
+        'nama',
+        'user_id',
+        'email',
+        'phone',
+        'address',
+        'password',
     ];
 
-    public function orders()
-    {
-        return $this->hasMany(Order::class, 'AdminID', 'AdminID');
-    }
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

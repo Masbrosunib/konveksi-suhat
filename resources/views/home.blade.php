@@ -177,58 +177,27 @@
         </h2>
       </div>
       <div class="row">
-        <div class="product-container">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/varsity.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>Varsity</h6>
-                <h6><span>Rp39k</span></h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="product-container">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/varsity.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>Varsity</h6>
-                <h6><span>Rp39k</span></h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="product-container">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/varsity.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>Varsity</h6>
-                <h6><span>Rp39k</span></h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="product-container">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/varsity.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>Varsity</h6>
-                <h6><span>Rp39k</span></h6>
-              </div>
-            </a>
-          </div>
-        </div>
+        @php ($count = 1)
+        @foreach ($products as $product)
+            @if(isset($product->productName) && isset($product->product_price))
+                @if($count <= 4)
+                    <div class="product-container">
+                      <div class="box">
+                        <a onclick="togglePopup()">
+                          <div class="img-box">
+                            <img src="images/varsity.png" alt="{{ $product->image }}">
+                          </div>
+                          <div class="detail-box">
+                            <h6>{{ $product->productName }}</h6>
+                            <h6><span>Rp. {{ $product->price_per_piece }}</span></h6>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                @endif
+                @php($count++)
+            @endif
+        @endforeach
       </div>
       <div class="btn-box">
         <a href="product">

@@ -1,28 +1,42 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
-    protected $table = 'customers';
-    protected $primaryKey = 'CustomerID';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $primaryKey = 'customer_id';
+
     protected $fillable = [
-        'CustomerID', 'Nama', 'Email', 'Phone', 'Address', 'Password'
+        'nama',
+        'email',
+        'phone',
+        'address',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'CustomerID', 'CustomerID');
+        return $this->hasMany(Order::class, 'customer_id', 'customer_id');
     }
 
     public function cart()
     {
-        return $this->hasMany(Cart::class, 'CustomerID', 'CustomerID');
+        return $this->hasOne(Cart::class, 'customer_id', 'customer_id');
     }
 }

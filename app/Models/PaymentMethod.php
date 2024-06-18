@@ -1,23 +1,24 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PaymentMethod extends Model
 {
     use HasFactory;
 
-    protected $table = 'payment_methods';
-    protected $primaryKey = 'PaymentID';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $primaryKey = 'payment_id';
+
     protected $fillable = [
-        'PaymentID', 'paymentName', 'paymentValue'
+        'payment_name',
+        'payment_value',
     ];
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'PaymentID', 'PaymentID');
+        return $this->hasMany(Order::class, 'payment_id', 'payment_id');
     }
 }

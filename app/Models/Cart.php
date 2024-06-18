@@ -8,19 +8,21 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $table = 'carts';
-    public $incrementing = false;
     protected $fillable = [
-        'CustomerID', 'ProductID', 'quantity', 'price', 'description'
+        'customer_id',
+        'product_id',
+        'quantity',
+        'price',
+        'description',
     ];
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class, 'CustomerID', 'CustomerID');
+        return $this->belongsTo(Customer::class, 'customer_id', 'customer_id');
     }
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'ProductID', 'ProductID');
+        return $this->belongsTo(Product::class, 'product_id', 'product_id');
     }
 }

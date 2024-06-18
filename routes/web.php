@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', [SesiController::class, 'create']);
 });
 
-Route::get('/product', [ProductController::class, 'getProduct']);
+Route::get('/', [HomeController::class, 'getProduct']);
 
 Route::post('logout', '\App\Http\Controllers\SesiController@logout');
 Route::get('/', function() {
@@ -42,9 +43,9 @@ Route::get('/dashboard', function() {
 //     return view('orders');
 // });
 
-// Route::get('/product', function () {
-//     return view('product');
-// });
+Route::get('/product', function () {
+    return view('product');
+});
 
 // Route::get('/cart', function () {
 //     return view('cart');

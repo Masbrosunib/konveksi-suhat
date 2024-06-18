@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DummyUsersSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class DummyUsersSeeder extends Seeder
      */
     public function run(): void
     {
-        $userdata = [
+        DB::table('users')->insert([
             [
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
@@ -28,9 +29,26 @@ class DummyUsersSeeder extends Seeder
                 'password' => bcrypt('user123'),
                 'role' => 'user'
             ],
-        ];
-        foreach ($userdata as $key => $val) {
-            User::create($val);
-        }
+        ]);
+
+        // $userdata = [
+        //     [
+        //         'name' => 'Admin',
+        //         'email' => 'admin@gmail.com',
+        //         'phone' => '08123456789',
+        //         'password' => bcrypt('admin123'),
+        //         'role' => 'admin'
+        //     ],
+        //     [
+        //         'name' => 'User',
+        //         'email' => 'user@gmail.com',
+        //         'phone' => '08123456789',
+        //         'password' => bcrypt('user123'),
+        //         'role' => 'user'
+        //     ],
+        // ];
+        // foreach ($userdata as $key => $val) {
+        //     User::create($val);
+        // }
     }
 }

@@ -18,8 +18,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'eloquent.creating: App\Models\User' => [
+            'App\Observers\UserObserver@creating',
+        ],
     ];
-
     /**
      * Register any events for your application.
      */

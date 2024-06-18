@@ -10,8 +10,8 @@ class ProductController extends Controller
 {
     function getProduct() {
 
-        $data = product::all();
+        $products = product::all();
 
-        return view('product', compact('data'));
+        return view('product', compact('products'));
     }
 }

@@ -8,20 +8,15 @@ use App\Models\Product;
 
 class HomeController extends Controller
 {
+    /**
+     * Retrieves all products from the database and returns a view with the products.
+     *
+     * @return \Illuminate\Contracts\View\View The view with the products.
+     */
     function getProduct() {
 
-        // Check if the 'product' table exists before querying it to avoid potential exceptions.
-        if (!\Schema::hasTable('products')) {
-            return view('home');
-        }
-        
-        $data = Product::query()->get();
-        
-        // Check if the query returned any results to avoid potential null pointer references.
-        if ($data === null) {
-            return view('home');
-        }
+        $products = Product::all();
 
-        return view('home', compact('data'));
+        return view('home', compact('products'));
     }
 }
