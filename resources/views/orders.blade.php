@@ -117,28 +117,31 @@
   </div>
 
   <!-- table starts -->
-  <div class="card"  style="border-bottom: none; border-left: none; border-right: none;">
-    <img src="images/varsity.png" class="card-img-top">
-    <div class="card-body">
-      <div class="text-section">
-        <h5 class="card-title">Varsity</h5>
-        <p class="card-text">Sleeve: Kulit <br>
-          Patch: Embroidery <br>
-          Color: Red <br>
-          Interior: Cotton Fleece</p>
-      </div>
-      <div class="cta-section">
-        <div style="text-align: right;">
-          x12 <br>
-          Rp260.000 <br>
-          <b>Rp2.260.000</b>
+  @foreach($orders as $order)        
+    <div class="card"  style="border-bottom: none; border-left: none; border-right: none;">
+      <img src="images/varsity.png" alt="" class="card-img-top">
+      <div class="card-body">
+        <div class="text-section">
+          <h5 class="card-title">
+            Nama Produk  {{-- {{ $products[$order->product_id]->product_name }} --}}
+          </h5>
+          <p class="card-text">
+            Order Date: {{ $order->order_date }} <br>
+            Estimation: {{ $order->order_estimation_date }} <br>
+            Quantity: {{ $order->quantity }} <br>
+            Total Price: Rp{{ number_format($order->total_price, 2, ",", ".") }} <br>
+            Order Status: {{ $order->order_status }} <br>
+          </p>
         </div>
-        <button class="btn btn-sm btn-warning" onclick="togglePopup()">Details</button>
-        <button class="btn btn-sm btn-danger">Cancel</button></td>
-                
+        <div class="cta-section">
+          <div style="text-align: right;">
+            <button class="btn btn-sm btn-warning" onclick="togglePopup('{{ $order->product->id }}')">Details</button>
+            <button class="btn btn-sm btn-danger">Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  @endforeach
   
   <div class="card" style="border-bottom: none; border-left: none; border-right: none;">
     <img src="images/varsity.png" class="card-img-top">

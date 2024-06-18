@@ -26,20 +26,14 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'getProduct']);
-
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/orders/{customerId}', [OrderController::class, 'getOrders']);
-});
+Route::get('/orders', [OrderController::class, 'getOrdersByUserId'])->middleware(['auth', 'role:user']);
 
 
+Route::get('/product', [ProductController::class, 'getProduct']);
 Route::post('logout', '\App\Http\Controllers\SesiController@logout');
 // Route::get('/', function() {
 //     return view('home');
 // });
-
-Route::get('/dashboard', function() {
-    return redirect('/admin');
-});
 
 // Route::get('/index', function () {
 //     return view('index');
@@ -49,9 +43,6 @@ Route::get('/dashboard', function() {
 //     return view('orders');
 // });
 
-Route::get('/product', function () {
-    return view('product');
-});
 
 // Route::get('/cart', function () {
 //     return view('cart');
