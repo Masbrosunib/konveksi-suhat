@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    function getOrders($customerId)
+    function getOrders($customerId, $customerName)
     {
         $data = Order::table('orders')
-            ->join('customers', 'orders.CustomerID', '=', 'customers.CustomerID')
-            ->select('orders.*', 'customers.CustomerID', 'customers.name', 'customers.email', 'customers.phone', 'customers.address')
-            ->where('orders.CustomerID', $customerId)
+            ->join('customers', 'orders.customer_id', '=', 'customers.customer_id')
+            ->select('orders.*', 'customers.customer_id', 'customers.name', 'customers.email', 'customers.phone', 'customers.address')
+            ->where('orders.customer_id', $customerId)
             ->get();
         return view('order', compact('data'));
     }

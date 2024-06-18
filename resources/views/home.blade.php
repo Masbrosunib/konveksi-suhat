@@ -179,7 +179,7 @@
       <div class="row">
         @php ($count = 1)
         @foreach ($products as $product)
-            @if(isset($product->productName) && isset($product->product_price))
+            @if(isset($product->product_name) && isset($product->product_price))
                 @if($count <= 4)
                     <div class="product-container">
                       <div class="box">
@@ -188,8 +188,8 @@
                             <img src="images/varsity.png" alt="{{ $product->image }}">
                           </div>
                           <div class="detail-box">
-                            <h6>{{ $product->productName }}</h6>
-                            <h6><span>Rp. {{ $product->price_per_piece }}</span></h6>
+                            <h6>{{ $product->product_name}}</h6>
+                            <h6><span>Rp. {{ $product->product_price }}</span></h6>
                           </div>
                         </a>
                       </div>

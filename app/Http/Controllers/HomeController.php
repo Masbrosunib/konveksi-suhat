@@ -16,7 +16,19 @@ class HomeController extends Controller
     function getProduct() {
 
         $products = Product::all();
+        
 
         return view('home', compact('products'));
+    }
+
+    function show(){
+        $products = Product::all();
+        $this->debug($products);
+    }
+
+    private function debug($data){
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
     }
 }
