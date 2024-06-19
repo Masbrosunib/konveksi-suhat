@@ -11,6 +11,12 @@ class OrderController extends Controller
 {
     public function __construct()
     {
+        $user = Auth::user();
+
+        // if (!$user || $user->role !== 'user') {
+        //     // Redirect to the login page if the user is not logged in or does not have the 'user' role
+        //     return redirect('/login');
+        // }
         // Ensure that only authenticated users can access the controller's methods
         $this->middleware('auth');
     }
@@ -19,20 +25,15 @@ class OrderController extends Controller
     {
         // Get the authenticated user
         $user = Auth::user();
-
+        
         // Check if the authenticated user has the 'user' role
         if ($user->role === 'user') {
+            
             // Fetch orders for the authenticated user
-            $orders = Order::where('customer_id', $user->id)->get();
-
-            // Fetch products for the orders
-            $products = [];
-            foreach ($orders as $order) {
-                $products[] = Product::find($order->product_id);
-            }
+            $orders = Order::with('product')->where('customer_id', $user->id)->get();
 
             // Pass orders data to the Blade view
-            return view('orders', compact('orders', 'products'));
+            return view('orders', compact('orders'));
 
             // $orders = Order::where('customer_id', $user->id)->get();
 
@@ -53,5 +54,13 @@ class OrderController extends Controller
                 'message' => 'Unauthorized',
             ], 403);
         }
+    }
+
+    public function createOrder(Request $request)
+    {
+        $order = new Order;
+        $order->customer_id = $request->customer_id;
+        $order->product_id = $request->product_id;
+        $order->save();
     }
 }

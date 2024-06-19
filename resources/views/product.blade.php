@@ -84,7 +84,15 @@
               <span class="nav-action-text">Search</span>
             </button>
           </li>
+          @if(auth()->check())
+          <li>
+            <a href="profile" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
+              <span class="nav-action-text">My Account</span>
+            </a>
+          </li>
+          @else
           <li>
             <a href="login" class="nav-action-btn">
               <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
@@ -92,7 +100,7 @@
               <span class="nav-action-text">My Account</span>
             </a>
           </li>
-
+          @endif
           <li>
             <a href="cart">
               <button class="nav-action-btn">
@@ -104,6 +112,20 @@
               </button>
             </a>
           </li>
+          @if(auth()->check())
+          <li v-if="Auth.check()">
+            <form action="@route('logout')" method="POST">
+              @csrf  
+              <input type="hidden" name="logout" value="POST" > 
+              <a href="">
+                <button class="nav-action-btn">
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  <span class="nav-action-text">logout</span>
+                </button>
+              </a>
+            </form>
+          </li>
+          @endif
 
         </ul>
 
@@ -196,7 +218,37 @@
 
    <!-- pop up -->
   <!-- pop up 1 -->
+  @foreach ($products as $product)
   <div class="popup" id="popup-1">
+    <div class="popup-overlay"></div>
+    <div class="content">
+      <div class="close-btn" onclick="togglePopup()">&times;</div>
+      <div class="popup-img">
+        <img src="images/varsity.png" alt="" class="card-img-top">
+      </div>
+          
+      <div class="title-section">
+        <h5 class="card-title"> {{ $product->product_name }}</h5>
+      </div>
+      <div class="card-body">
+        <div class="text-section">
+          <p>
+            {{ $product->product_description }}
+          </p>
+          <div>
+            <strong>Rp{{ number_format($product->product_price, 2, ",", ".") }} <br>
+              min. {{ $product->minimum_order_quantity }} pcs <br>
+            </strong>
+          </div>          
+        </div>
+      </div>
+      <button class="btn btn-sm">Add To Cart</button>
+      <button class="btn btn-sm btn-danger">Buy Now</button>
+    </div>
+  </div>
+  @endforeach
+  <!-- pop up 2 -->
+  {{-- <div class="popup" id="popup-1">
     <div class="popup-overlay"></div>
     <div class="content">
       <div class="close-btn" onclick="togglePopup()">&times;</div>
@@ -223,8 +275,7 @@
       <button class="btn btn-sm">Add To Cart</button>
       <button class="btn btn-sm btn-danger">Buy Now</button>
     </div>
-  </div>
-
+  </div> --}}
   
   
   <footer class="footer">

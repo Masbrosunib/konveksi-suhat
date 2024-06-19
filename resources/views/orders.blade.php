@@ -84,24 +84,48 @@
               <span class="nav-action-text">Search</span>
             </button>
           </li>
-
+          @if(auth()->check())
           <li>
-            <a href="/" class="nav-action-btn">
+            <a href="profile" class="nav-action-btn">
               <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
               <span class="nav-action-text">My Account</span>
             </a>
           </li>
-
+          @else
           <li>
-            <button class="nav-action-btn">
-              <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+            <a href="login" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
-              <data class="nav-action-text">Cart</data>
-
-              <data class="nav-action-badge" value="4" aria-hidden="true">2</data>
-            </button>
+              <span class="nav-action-text">My Account</span>
+            </a>
           </li>
+          @endif
+          <li>
+            <a href="cart">
+              <button class="nav-action-btn">
+                <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+  
+                <data class="nav-action-text">Cart</data>
+  
+                <data class="nav-action-badge" value="2" aria-hidden="true">2</data>
+              </button>
+            </a>
+          </li>
+          @if(auth()->check())
+          <li v-if="Auth.check()">
+            <form action="@route('logout')" method="POST">
+              @csrf  
+              <input type="hidden" name="logout" value="POST" > 
+              <a href="">
+                <button class="nav-action-btn">
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  <span class="nav-action-text">logout</span>
+                </button>
+              </a>
+            </form>
+          </li>
+          @endif
 
         </ul>
 
@@ -117,13 +141,14 @@
   </div>
 
   <!-- table starts -->
-  @foreach($orders as $order)        
+  @foreach($orders as $order)
+    @php ($id = 2)        
     <div class="card"  style="border-bottom: none; border-left: none; border-right: none;">
       <img src="images/varsity.png" alt="" class="card-img-top">
       <div class="card-body">
         <div class="text-section">
           <h5 class="card-title">
-            Nama Produk  {{-- {{ $products[$order->product_id]->product_name }} --}}
+            Nama Produk {{ $order->product_name }}
           </h5>
           <p class="card-text">
             Order Date: {{ $order->order_date }} <br>
@@ -135,15 +160,19 @@
         </div>
         <div class="cta-section">
           <div style="text-align: right;">
-            <button class="btn btn-sm btn-warning" onclick="togglePopup('{{ $order->product->id }}')">Details</button>
+            <div style="text-align: right;">
+              Quantity: {{ $order->quantity }} <br>
+              Total Price: Rp{{ number_format($order->total_price, 2, ",", ".") }} <br>
+            </div>
+            <button class="btn btn-sm btn-warning" onclick="togglePopup()">Details</button>
             <button class="btn btn-sm btn-danger">Cancel</button>
           </div>
         </div>
       </div>
     </div>
-  @endforeach
+  {{-- @endforeach --}}
   
-  <div class="card" style="border-bottom: none; border-left: none; border-right: none;">
+  {{-- <div class="card" style="border-bottom: none; border-left: none; border-right: none;">
     <img src="images/varsity.png" class="card-img-top">
     <div class="card-body">
       <div class="text-section">
@@ -164,37 +193,36 @@
                 
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <!-- pop up -->
   <!-- pop up 1 -->
-  <div class="popup" id="popup-1">
-    <div class="popup-overlay"></div>
-    <div class="content">
-      <div class="close-btn" onclick="togglePopup()">&times;</div>
-      <div class="popup-img">
-        <img src="images/varsity.png" class="card-img-top">
-      </div>
-      <div class="title-section">
-        <h5 class="card-title">Varsity</h5>
-      </div>
-      <div class="card-body">
-        <div class="text-section">
-          <p>Sleeve: Kulit <br>
-            Patch: Embroidery <br>
-            Color: Red <br>
-            Interior: Cotton Fleece
-          </p>
-          <div>
-            x12 <br>
-            Rp260.000 <br>
-            <b>Rp2.260.000</b>
-          </div>         
+  {{-- @foreach ($orders as $order) --}}
+  <div id="popup-1" class="popup">
+        <div class="popup-overlay"></div>
+        <div class="content">
+            <div class="close-btn" onclick="togglePopup()">&times;</div>
+            <div class="popup-img">
+                <img src="images/varsity.png" class="card-img-top">
+            </div>
+            <div class="title-section">
+                <h5 class="card-title">{{ $order->product_name }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="text-section">
+                    <p>
+                        Order Date: {{ $order->order_date }} <br>
+                        Estimation: {{ $order->order_estimation_date }} <br>
+                        Quantity: {{ $order->quantity }} <br>
+                        Total Price: Rp{{ number_format($order->total_price, 2, ',', '.') }} <br>
+                        Order Status: {{ $order->order_status }} <br>
+                    </p>
+                </div>
+                <button class="btn btn-sm btn-danger">Cancel Order</button>
+            </div>
         </div>
-      </div>
-      <button class="btn btn-sm btn-danger">Cancel Order</button>
     </div>
-  </div>
+  @endforeach
   <!-- pop up 2 -->
   <div class="popup" id="popup-2">
     <div class="popup-overlay"></div>

@@ -1,12 +1,11 @@
 
 
-function togglePopup(){
+function togglePopup(id){
     document.getElementById("popup-1").classList.toggle("active");
 }
 
-// function togglePopup(id){
-//     +    const popup = document.getElementById(id);
-//     +    popup.classList.toggle("active");
+// function togglePopup(orderId) {
+//     document.getElementById("popup-" + orderId).classList.toggle("active");
 // }
 
 'use strict';
