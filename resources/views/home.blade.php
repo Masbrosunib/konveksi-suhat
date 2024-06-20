@@ -36,7 +36,7 @@
 
       <div class="overlay" data-overlay></div>
 
-      <a href="/" class="logo">
+      <a href="home" class="logo">
         <img src="images/logo.png" width="270" height="50" alt="Konveksi Suhat logo">
       </a>
 
