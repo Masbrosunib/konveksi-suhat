@@ -70,6 +70,10 @@
               </li>
     
               <li class="navbar-item">
+                <a href="checkout" class="navbar-link">Checkout</a>
+              </li>
+              
+              <li class="navbar-item">
                 <a href="contact" class="navbar-link">Contact</a>
               </li>
 

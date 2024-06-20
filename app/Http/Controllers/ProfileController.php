@@ -11,8 +11,8 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        $user = Auth::user();
-        return view('profile.edit', compact('user'));
+        $users = Auth::user();
+        return view('profile', compact('users'));
     }
 
     public function update(Request $request)
@@ -24,15 +24,17 @@ class ProfileController extends Controller
             'address' => 'nullable|string|max:255',
         ]);
 
-        $user = Auth::user();
-        $user = User::find($user->id);
-        $user->name = $request->input('name');
-        $user->phone = $request->input('phone');
-        $user->email = $request->input('email');
-        $user->address = $request->input('address');
+        // if($users)
 
-        $user->save();
+        $users = Auth::user();
+        $users = User::find($users->id);
+        $users->name = $request->input('name');
+        $users->phone = $request->input('phone');
+        $users->email = $request->input('email');
+        $users->address = $request->input('address');
 
-        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully.');
+        $users->save();
+
+        return redirect()->route('profile.update')->with('success', 'Profile updated successfully.');
     }
 }

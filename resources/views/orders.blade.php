@@ -70,6 +70,10 @@
               </li>
     
               <li class="navbar-item">
+                <a href="checkout" class="navbar-link">Checkout</a>
+              </li>
+              
+              <li class="navbar-item">
                 <a href="contact" class="navbar-link">Contact</a>
               </li>
 
@@ -148,7 +152,7 @@
       <div class="card-body">
         <div class="text-section">
           <h5 class="card-title">
-            Nama Produk {{ $order->product_name }}
+            {{ $order->product->product_name }}
           </h5>
           <p class="card-text">
             Order Date: {{ $order->order_date }} <br>

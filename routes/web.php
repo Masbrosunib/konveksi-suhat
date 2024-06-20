@@ -38,19 +38,19 @@ Route::get('/checkout', function () {
     return view('checkout');
 });
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::post('/profile', [ProductController::class, 'update'])->name('profile.update');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [ProductController::class, 'update'])->name('profile.update');
+});
 
 Route::get('/checkout', [OrderController::class, 'showCheckoutForm'])->name('checkout.form');
 Route::post('/checkout', [OrderController::class, 'processCheckout'])->name('checkout.process');
 Route::get('/checkout/confirmation', [OrderController::class, 'showOrderConfirmation'])->name('checkout.confirmation');
 Route::get('/orders/{order}', [OrderController::class, 'getOrderDetails'])->name('order.details');
 
-route::get('/profile', function () {
-   return view('profile'); 
-});
+// route::get('/profile', function () {
+//    return view('profile'); 
+// });
 // Route::get('/', function() {
 //     return view('home');
 // });
