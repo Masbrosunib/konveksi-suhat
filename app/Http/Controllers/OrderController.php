@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
+use App\Models\PaymentMethod;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
 {
@@ -56,11 +58,62 @@ class OrderController extends Controller
         }
     }
 
-    public function createOrder(Request $request)
+    public function showCheckoutForm()
     {
-        $order = new Order;
-        $order->customer_id = $request->customer_id;
+        $products = Product::all();
+        $paymentMethods = PaymentMethod::all();
+        return view('checkout', compact('products', 'paymentMethods'));
+    }
+
+    public function processCheckout(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|exists:products,product_id',
+            'quantity' => 'required|integer|min:12',
+            'design_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'payment_id' => 'required|exists:payment_methods,payment_id',
+        ]);
+
+        $product = Product::find($request->product_id);
+        $totalPrice = $product->product_price * $request->quantity;
+
+        $designImage = null;
+        if ($request->hasFile('design_image')) {
+            $designImage = $request->file('design_image')->store('design_images', 'public');
+        }
+
+        $order = new Order();
+        $order->customer_id = Auth::id();
         $order->product_id = $request->product_id;
+        $order->quantity = $request->quantity;
+        $order->total_price = $totalPrice;
+        $order->order_date = now();
+        $order->order_estimation_date = now()->addDays(7);
+        $order->order_status = 'Pending';
+        $order->design_image = $designImage;
+        $order->payment_id = $request->payment_id;
         $order->save();
+
+        return redirect()->route('checkout.confirmation')->with('order', $order);
+    }
+
+    public function showOrderConfirmation()
+    {
+        $orders = Order::with(['product', 'paymentMethod'])->where('customer_id', auth()->id())->get();
+        return view('order_confirmation', compact('orders'));
+    }
+
+    public function getOrderDetails(Order $order)
+    {
+        return response()->json([
+            'product_name' => $order->product->product_name,
+            'quantity' => $order->quantity,
+            'total_price' => $order->total_price,
+            'order_date' => $order->order_date,
+            'order_estimation_date' => $order->order_estimation_date,
+            'order_status' => $order->order_status,
+            'payment_method_name' => $order->paymentMethod->payment_name,
+            'design_image' => $order->design_image ? Storage::url($order->design_image) : null,
+        ]);
     }
 }

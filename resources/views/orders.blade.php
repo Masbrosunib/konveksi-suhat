@@ -52,7 +52,7 @@
         </button>
 
         <a href="home" class="logo">
-          <img src="./assets/images/favicon.png" width="70" height="50" alt="Konveksi Suhat logo">
+          <img src="images/logo.png" width="70" height="50" alt="Konveksi Suhat logo">
         </a>
 
         <ul class="navbar-list">
@@ -224,31 +224,14 @@
     </div>
   @endforeach
   <!-- pop up 2 -->
-  <div class="popup" id="popup-2">
-    <div class="popup-overlay"></div>
-    <div class="content">
-      <div class="close-btn" onclick="togglePopup()">&times;</div>
-      <div class="popup-img">
-        <img src="images/varsity.png" class="card-img-top">
-      </div>
-      <div class="title-section">
-        <h5 class="card-title">Varsity</h5>
-      </div>
-      <div class="card-body">
-        <div class="text-section">
-          <p>Sleeve: Kulit <br>
-            Patch: Embroidery <br>
-            Color: Red <br>
-            Interior: Cotton Fleece
-          </p>
-          <div>
-            x24 <br>
-            Rp260.000 <br>
-            <b>Rp4.520.000</b>
-          </div>         
+  <div class="popup" id="order-popup" style="display: none;">
+    <div class="popup-overlay" onclick="hidePopup()"></div>
+    <div class="popup-content">
+        <div class="close-btn" onclick="hidePopup()">&times;</div>
+        <div class="popup-body">
+            <h5 class="card-title">Order Details</h5>
+            <p id="order-details"></p>
         </div>
-      </div>
-      <button class="btn btn-sm btn-danger">Cancel Order</button>
     </div>
   </div>
   
@@ -452,6 +435,30 @@
   <a href="#top" class="go-top-btn" data-go-top>
     <ion-icon name="arrow-up-outline"></ion-icon>
   </a>
+
+  <script>
+    function showPopup(orderId) {
+        fetch(`/orders/${orderId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('order-details').innerHTML = `
+                    Product: ${data.product_name} <br>
+                    Quantity: ${data.quantity} <br>
+                    Total Price: Rp${new Intl.NumberFormat('id-ID', { minimumFractionDigits: 2 }).format(data.total_price)} <br>
+                    Order Date: ${data.order_date} <br>
+                    Estimation Date: ${data.order_estimation_date} <br>
+                    Order Status: ${data.order_status} <br>
+                    Payment Method: ${data.payment_method_name} <br>
+                    ${data.design_image ? 'Design Image: <img src="' + data.design_image + '" alt="Design Image" width="100">' : ''}
+                `;
+                document.getElementById('order-popup').style.display = 'block';
+            });
+    }
+
+    function hidePopup() {
+        document.getElementById('order-popup').style.display = 'none';
+    }
+  </script>
 
   <script src="index.js"></script>
   <script src="js/jquery-3.4.1.min.js"></script>

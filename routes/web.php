@@ -31,6 +31,16 @@ Route::get('/orders', [OrderController::class, 'getOrdersByUserId'])->middleware
 
 Route::get('/product', [ProductController::class, 'getProduct']);
 Route::post('logout', '\App\Http\Controllers\SesiController@logout');
+
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+
+Route::get('/checkout', [OrderController::class, 'showCheckoutForm'])->name('checkout.form');
+Route::post('/checkout', [OrderController::class, 'processCheckout'])->name('checkout.process');
+Route::get('/checkout/confirmation', [OrderController::class, 'showOrderConfirmation'])->name('checkout.confirmation');
+Route::get('/orders/{order}', [OrderController::class, 'getOrderDetails'])->name('order.details');
+
 // Route::get('/', function() {
 //     return view('home');
 // });

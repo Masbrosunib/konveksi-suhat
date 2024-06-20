@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('product_price');
             $table->string('product_image', 255);
             $table->string('product_categories', 255);
-            $table->integer('minimum_order_quantity')->default(12)->min(12);
+            $table->integer('quantity')->default(12)->min(12);
             $table->unsignedBigInteger('ornament_id');
             $table->timestamps();
 

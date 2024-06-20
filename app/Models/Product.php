@@ -18,7 +18,7 @@ class Product extends Model
         'product_price',
         'product_image',
         'product_categories',
-        'minimum_order_quantity',
+        'quantity',
         'ornament_id',
     ];
 
