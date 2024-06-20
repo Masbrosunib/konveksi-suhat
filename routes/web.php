@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\SesiController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,39 +16,45 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['guest'])->group(function () {
-    Route::get('/', [SesiController::class, 'index']);
-    Route::post('/', [SesiController::class, 'login']);
-});
-
-Route::get('/', function() {
-    return view('home');
-});
-
-Route::get('/dashboard', function() {
-    return redirect('/admin');
-});
-
-Route::get('/customer', [CustomerController::class, 'index']);
+Route::get('/', [TransactionController::class, 'index'])->middleware('auth');
 
 
+//login view
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
-// Route::get('/index', function () {
-//     return view('index');
-// });
 
-// Route::get('/orders', function () {
-//     return view('orders');
-// });
+//input form view
+Route::get('/input-form', function () {
+    return view('inputform.inform', [
+        'active' => 'input-form',
+        'listBaju' => []
+    ]);
+})->middleware('auth');
+Route::get('/input-form/{id}', [TransactionController::class, 'getTransaction'])->middleware('auth');
+Route::post('/transactions', [TransactionController::class, 'createPO']);
+Route::post('/transactions/update', [TransactionController::class, 'updateTransaction']);
+Route::post('/end-transactions', [TransactionController::class, 'selesaiPekerjaan']);
+Route::post('/delete-transactions', [TransactionController::class, 'deletePekerjaan']);
 
-// Route::get('/product', function () {
-//     return view('product');
-// });
+//pending form view
+Route::get('/pending-form', [TransactionController::class, 'viewPending'])->middleware('auth');
 
-// Route::get('/cart', function () {
-//     return view('cart');
-// });
+//role view
+Route::get('/user', [UserController::class, 'index'])->middleware('auth');
+Route::post('/user', [UserController::class, 'store'])->middleware('auth');
+Route::get('/user/{id}', [UserController::class, 'getUser'])->middleware('auth');
+Route::post('/delete-user', [UserController::class, 'deleteUser'])->middleware('auth');
 
-// Route::get('/contact', function () {
-//     return view('contact');
-// });
+//history view
+Route::get('/history', [TransactionController::class, 'viewHistory'])->middleware('auth')->middleware('role:Admin');
+
+//Form PO view
+Route::get('/formpo/{id}', [TransactionController::class, 'generateFormPO'])->middleware('auth');
+
+//Form Desain view
+// Route::get('/worksheet/{id}', [TransactionController::class, 'generateFormWorksheet'])->middleware('auth');
+
+//Form Invoice view
+Route::get('/forminvoice/{id}', [TransactionController::class, 'generateFormInvoice'])->middleware('auth');
